@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import './AdminLogin.css';
 import { auth } from '../firebase.js';
+import { useNavigate } from 'react-router-dom';
 
-const AdminLogin = ({ onLogin }) => {
+function AdminLogin({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate(); // Using useNavigate instead of history
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            // Send til adminconsole hvis login er sukseful
             onLogin();
+            navigate('/adminconsole'); // Use navigate instead of history.push
         } catch (error) {
             setError(error.message);
         }
@@ -36,6 +38,6 @@ const AdminLogin = ({ onLogin }) => {
             </form>
         </div>
     );
-};
+}
 
 export default AdminLogin;
