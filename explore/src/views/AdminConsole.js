@@ -14,9 +14,11 @@ function AdminConsole() {
 
         // Add a new document with a generated id.
         const docRef = await addDoc(collection(db, "destinations"), {
-            name: destinationName,
+            destinationName: destinationName,
             country: country,
-            description: destinationDescription,
+            destinationDescription: destinationDescription,
+            // TODO: Fix file upload
+            // picture: picture,
         });
 
         console.log('Creating travel destination:', { destinationName, country });
