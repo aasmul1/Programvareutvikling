@@ -15,10 +15,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Places />} />
         <Route path="/adminconsole" element={<AdminConsole />} />
         <Route path="/admin" element={<AdminLogin onLogin={handleLogin} />} />
-        <Route path="/Places" element={<Places />} />
       
       </Routes>
     </Router>
