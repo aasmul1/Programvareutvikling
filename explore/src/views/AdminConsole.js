@@ -7,7 +7,8 @@ function AdminConsole() {
     const [destinationName, setDestinationName] = useState('');
     const [country, setCountry] = useState('');
     const [destinationDescription, setDestinationDescription] = useState('');
-    const [picture, setPicture] = useState(null); // Initialize state to manage the uploaded file
+    // Set initial state with the specified default image URL
+    const [url, setUrl] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevent the form from causing a page reload
@@ -17,21 +18,18 @@ function AdminConsole() {
             destinationName: destinationName,
             country: country,
             destinationDescription: destinationDescription,
-            // TODO: Fix file upload
-            // picture: picture,
+            url: url, // Save the url state under the name 'url'
         });
 
-        console.log('Creating travel destination:', { destinationName, country });
+        console.log('Creating travel destination:', { destinationName, country, url });
         console.log("Document written with ID: ", docRef.id);
 
+        // Reset form fields
         setDestinationName('');
         setCountry('');
-        setDestinationDescription('')
-        setPicture(null);
-    };
-
-    const handleFileChange = (event) => {
-        setPicture(event.target.files[0]); // Update the state with the selected file
+        setDestinationDescription('');
+        // Reset URL to default
+        setUrl("");
     };
 
     return (
@@ -46,7 +44,6 @@ function AdminConsole() {
                         value={destinationName}
                         onChange={(e) => setDestinationName(e.target.value)}
                         placeholder='Destination Name'
-                        aria-multiline='true'
                         required
                     />
                 </div>
@@ -72,9 +69,12 @@ function AdminConsole() {
                 </div>
                 <div className="form-group">
                     <input
-                        type="file"
-                        onChange={handleFileChange}
-                        accept='image/*'
+                        type="text"
+                        id="url"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        required
+                        placeholder='Image URL'
                     />
                 </div>
                 <div className="button-wrapper">
@@ -82,7 +82,6 @@ function AdminConsole() {
                 </div>
             </form>
         </div>
-
     );
 }
 
