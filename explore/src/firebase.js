@@ -25,3 +25,6 @@ const analytics = getAnalytics(app);
 // Initialize and export Firebase services
 export const auth = getAuth(app); // Export auth
 export const firestore = getFirestore(app);
+export const db = firestore;
+
+
