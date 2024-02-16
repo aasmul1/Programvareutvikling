@@ -1,0 +1,82 @@
+.Form {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+h2 {
+  color: rgb(171, 176, 176);
+  margin-bottom: calc(5px + 2vmin);
+}
+
+h3 {
+  margin-top: 0;
+  font-weight: normal;
+  font-size: calc(5px + 2vmin);
+
+}
+
+form-header {
+    color: darkslategrey;
+    font-size: calc(10px + 2vmin);
+    align-items: center;
+
+}
+
+input[type="text"] {
+  width: 100%; /* Makes input take full width of its parent container */
+  padding: 10px; /* Adds more padding inside the text boxes */
+  margin: 5px 0; /* Adds some space above and below each text box */
+  box-sizing: border-box; /* Ensures padding does not affect the final size */
+  font-family: Arial, sans-serif; /* Example font family */
+
+}
+
+input[type="file"] {
+  width: 100%; /* Makes input take full width of its parent container */
+  padding: 10px; /* Adds more padding inside the text boxes */
+  margin: 5px 0; /* Adds some space above and below each text box */
+  box-sizing: border-box; /* Ensures padding does not affect the final size */
+  font-family: Arial, sans-serif; /* Example font family */
+  align-self: center;
+  display: flex;
+}
+
+input {
+  border-radius: 8px;
+  border-color: #282c34;
+}
+
+button[type="submit"] {
+  font-family: Arial, sans-serif; /* Example font family */
+  border-radius: 5px;
+  border-color: #282c34;
+}
+
+.form-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.button-wrapper {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center; /* Horizontally centers the button */
+  width: 100%; /* Ensures the wrapper takes the full width of its parent */
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  resize: vertical; /* Allows the user to resize the textarea vertically */
+  font-family: Arial, sans-serif; /* Example font family */
+  border-radius: 8px;
+  border-color: #282c34;
+}

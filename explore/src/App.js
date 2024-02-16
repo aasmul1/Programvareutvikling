@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './views/HomePage';
+import AdminConsole from './views/AdminConsole';
+import AdminLogin from './components/AdminLogin';
 
 function App() {
+  const handleLogin = () => {
+    // Handle the login logic here
+    // For example, you can set a flag indicating the user is logged in
+    console.log("User logged in!");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/adminconsole" element={<AdminConsole />} />
+        <Route path="/admin" element={<AdminLogin onLogin={handleLogin} />} />
+      </Routes>
+    </Router>
   );
 }
 
