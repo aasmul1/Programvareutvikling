@@ -28,6 +28,18 @@ function AdminConsole() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        // Add a new document with a generated id.
+        // const docRef = await addDoc(collection(db, "destinations"), {
+        //     destinationName: destinationName,
+        //     country: country,
+        //     destinationDescription: destinationDescription,
+        //     url: url,
+        //     // picture: picture,
+        // });
+
+        // console.log('Creating travel destination:', { destinationName, country });
+        // console.log("Document written with ID: ", docRef.id);
+        
         if (isEditing) {
             const destinationRef = doc(db, "destinations", currentEditingId);
             await updateDoc(destinationRef, {
@@ -50,7 +62,7 @@ function AdminConsole() {
         setDestinationName('');
         setCountry('');
         setDestinationDescription('');
-        setUrl("");
+        setUrl('');
         fetchDestinations();
     };
 
