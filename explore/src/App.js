@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+// src/App.js
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './views/HomePage';
+import { AuthProvider } from './contexts/AuthContext'; // Adjust the import path as necessary
 import AdminConsole from './views/AdminConsole';
 import AdminLogin from './components/AdminLogin';
+import RequireAdmin from './components/RequireAdmin';
 import Places from './Places'
 
 function App() {
-  const handleLogin = () => {
-    // Handle the login logic here
-    // For example, you can set a flag indicating the user is logged in
-    console.log("User logged in!");
-  };
-
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Places />} />
-        <Route path="/adminconsole" element={<AdminConsole />} />
-        <Route path="/admin" element={<AdminLogin onLogin={handleLogin} />} />
-      
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Places />} />
+          <Route path="/adminconsole" element={
+            <RequireAdmin>
+                <AdminConsole />
+            </RequireAdmin>} />
+          <Route path="/admin" element={<AdminLogin />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
