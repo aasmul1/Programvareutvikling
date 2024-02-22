@@ -136,9 +136,12 @@ function AdminConsole() {
                     <div key={destination.id} className="DestinationItem">
                         <h3>{destination.destinationName} ({destination.country})</h3>
                         <p>{destination.destinationDescription}</p>
-                        {destination.url && <img src={destination.url} alt={destination.destinationName} style={{ width: '100px', height: '100px' }} />}
-                        <button onClick={() => startEditing(destination)}>Edit</button>
-                        <button onClick={() => handleDelete(destination.id)}>Delete</button>
+                        {/* {destination.url && <img src={destination.url} alt={destination.destinationName} style={{ width: '100px', height: '100px' }} />} */}
+                        <div className="small-button">
+                            <button onClick={() => startEditing(destination)}>Edit</button>
+                            <button onClick={() => handleDelete(destination.id)}>Delete</button>
+                        </div>
+                        
                     </div>
                 ))}
             </div>
