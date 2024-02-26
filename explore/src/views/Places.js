@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
-import './Places.css';
+import '../styles/Places.css';
 import { collection, getDocs, query } from "firebase/firestore"; 
-import { db } from './firebase';
+import { db } from '../firebase';
 
 function Places() {
   const [destinations, setDestinations] = useState([]);
