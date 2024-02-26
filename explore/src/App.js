@@ -1,11 +1,11 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext'; // Adjust the import path as necessary
+import { AuthProvider } from './auth/AuthContext'; // Adjust the import path as necessary
 import AdminConsole from './views/AdminConsole';
-import AdminLogin from './components/AdminLogin';
-import RequireAdmin from './components/RequireAdmin';
-import Places from './Places'
+import AdminLogin from './views/AdminLogin';
+import RequireAdmin from './auth/RequireAdmin';
+import Places from './views/Places'
 
 function App() {
   return (
