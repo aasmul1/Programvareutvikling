@@ -19,7 +19,7 @@ body {
     background-color: var(--secondary-color);
     box-sizing: border-box;
 
-}
+} */
 
 .form-group {
     margin-bottom: 25px;
@@ -31,25 +31,26 @@ label {
 }
 
 input {
-    width: 100%;
+    width: calc(100% - 30px);
     padding: 15px;
     font-size: 18px;
     border: 1px solid #aaa;
     border-radius: 5px;
-    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 button {
-        width: 100%; 
-        padding: 15px;
-        font-size: 18px; 
-        background-color: var(--quaternary-color);
-        color: #fff;
-        border: 1px solid #aaa; 
-        border-radius: 5px;
-        cursor: pointer;
-        margin: auto; 
-        margin-top: 10px; 
+    width: calc(100% + 2px); 
+    padding: 15px;
+    font-size: 18px; 
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid #aaa; 
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+        
 }
 
 .error-message {
