@@ -107,6 +107,7 @@ function AdminConsole() {
                     </div>
                     <div className="form-group">
                         <textarea
+                            type="text"
                             id="destinationDescription"
                             value={destinationDescription}
                             onChange={(e) => setDestinationDescription(e.target.value)}
