@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/AdminConsole.css';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore"; 
+import '../styles/adminconsole/AdminConsole.css';
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from '../firebase';
+import AdminDestinationList from '../components/adminconsole/AdminDestinationList';
 
+/**
+ * Admin console for creating new destinations and edit/delete destinations.
+ * Should require admin.
+ * 
+ * @returns AdminConsole
+ */
 function AdminConsole() {
     const [destinationName, setDestinationName] = useState('');
     const [country, setCountry] = useState('');
@@ -28,18 +35,6 @@ function AdminConsole() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Add a new document with a generated id.
-        // const docRef = await addDoc(collection(db, "destinations"), {
-        //     destinationName: destinationName,
-        //     country: country,
-        //     destinationDescription: destinationDescription,
-        //     url: url,
-        //     // picture: picture,
-        // });
-
-        // console.log('Creating travel destination:', { destinationName, country });
-        // console.log("Document written with ID: ", docRef.id);
-        
         if (isEditing) {
             const destinationRef = doc(db, "destinations", currentEditingId);
             await updateDoc(destinationRef, {
@@ -108,6 +103,7 @@ function AdminConsole() {
                     <div className="form-group">
                         <textarea
                             type="text"
+                            size="3"
                             id="destinationDescription"
                             value={destinationDescription}
                             onChange={(e) => setDestinationDescription(e.target.value)}
@@ -122,7 +118,6 @@ function AdminConsole() {
                             id="url"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
-                            required
                             placeholder='Image URL'
                         />
                     </div>
@@ -133,18 +128,7 @@ function AdminConsole() {
             </div>
             <div className="DestinationList">
                 <h2>Existing Destinations</h2>
-                {destinations.map((destination) => (
-                    <div key={destination.id} className="DestinationItem">
-                        <h3>{destination.destinationName} ({destination.country})</h3>
-                        <p>{destination.destinationDescription}</p>
-                        {/* {destination.url && <img src={destination.url} alt={destination.destinationName} style={{ width: '100px', height: '100px' }} />} */}
-                        <div className="small-button">
-                            <button onClick={() => startEditing(destination)}>Edit</button>
-                            <button onClick={() => handleDelete(destination.id)}>Delete</button>
-                        </div>
-                        
-                    </div>
-                ))}
+                <AdminDestinationList destinations={destinations} startEditing={startEditing} handleDelete={handleDelete} />
             </div>
         </div>
     );

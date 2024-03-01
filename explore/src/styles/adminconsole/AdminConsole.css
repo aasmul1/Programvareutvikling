@@ -6,10 +6,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--quinary-color);
-  border-radius: 10px; 
-  padding: 20px; 
+  font-size: 15px;
+  color: white;
+  border-radius: 10px; /* Legg til avrundede hjørner på formen */
+  padding: 20px; /* Legg til litt padding for å gi luft rundt innholdet */
 }
 
 h2 {
@@ -32,6 +32,32 @@ form-header {
   font-size: calc(10px + 2vmin);
   align-items: center;
   background-color: var(--secondary-color);
+}
+
+input[type="text"],
+input[type="file"] {
+width: 100%; 
+padding: 10px; 
+margin: 5px 0; 
+box-sizing: border-box; 
+font-family: Arial, sans-serif;
+font-size: 15px;
+}
+
+input {
+border-radius: 8px;
+border-color: #282c34;
+}
+
+textarea {
+  resize: none;
+  font-family: Arial, sans-serif;
+  margin: 5px 0; 
+
+  
+}
+textarea::placeholder {
+  font-size: 15px;
 }
 
 button[type="submit"] {
@@ -114,3 +140,4 @@ border-color: #282c34;
   margin-bottom: 8%;
   width: 50%;
 }
+
