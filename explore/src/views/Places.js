@@ -3,6 +3,8 @@ import '../styles/places/Places.css';
 import { collection, getDocs, query } from "firebase/firestore"; 
 import { db } from '../firebase';
 import DestinationCard from '../components/places/DestinationCard'
+import { useNavigate } from 'react-router-dom';
+
 
 /**
  * Front page with destination data. Fetches destination from firestore. 
@@ -13,6 +15,8 @@ import DestinationCard from '../components/places/DestinationCard'
  */
 function Places() {
   const [destinations, setDestinations] = useState([]);
+  const navigate = useNavigate(); 
+
 
   useEffect(() => { 
     const fetchData = async () => {
@@ -32,9 +36,16 @@ function Places() {
     };
     fetchData();
   }, []);
+
+  const createuser = (e) => {
+    navigate('/createuser');
+  };
   
   return (
     <div className="Places">
+      <form onSubmit={createuser}>
+        <button type="createuser">Create user</button>
+      </form>
       <h1>Vacation Destinations</h1>
       <div className="grid">
         {destinations.map((destination) => (
