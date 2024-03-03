@@ -5,7 +5,8 @@ import { AuthProvider } from './auth/AuthContext'; // Adjust the import path as 
 import AdminConsole from './views/AdminConsole';
 import AdminLogin from './views/AdminLogin';
 import RequireAdmin from './auth/RequireAdmin';
-import Places from './views/Places'
+import Places from './views/Places';
+import CreateUser from './views/CreateUser'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
                 <AdminConsole />
             </RequireAdmin>} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/createuser" element={<CreateUser />}/>
         </Routes>
       </AuthProvider>
     </Router>
