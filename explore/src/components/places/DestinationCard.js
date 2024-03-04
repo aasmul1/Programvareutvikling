@@ -1,4 +1,5 @@
 import '../../styles/places/Places.css'
+import { Link } from 'react-router-dom';
 
 /**
  * 
@@ -13,7 +14,7 @@ function DestinationCard({ destination }) {
               <p className="destination-description">{destination.destinationDescription}</p>
               <p className="destinationName"> {destination.destinationName}</p>
               <img src={destination.url} alt={destination.destinationName} className="destination-image" />
-              <a href="#more" className="see-more">Want to see more?</a>
+              <Link to={`/places/${destination.id}`} className="see-more">Want to see more?</Link>
             </div>
     )
 }
