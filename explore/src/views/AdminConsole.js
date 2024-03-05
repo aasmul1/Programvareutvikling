@@ -4,17 +4,14 @@ import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase
 import { db } from '../firebase';
 import AdminDestinationList from '../components/adminconsole/AdminDestinationList';
 
-/**
- * Admin console for creating new destinations and edit/delete destinations.
- * Should require admin.
- * 
- * @returns AdminConsole
- */
 function AdminConsole() {
     const [destinationName, setDestinationName] = useState('');
     const [country, setCountry] = useState('');
     const [destinationDescription, setDestinationDescription] = useState('');
     const [url, setUrl] = useState("");
+    const [url1, setUrl1] = useState(""); 
+    const [url2, setUrl2] = useState(""); 
+    const [longText, setLongText] = useState(""); 
     const [destinations, setDestinations] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const [currentEditingId, setCurrentEditingId] = useState(null);
@@ -35,29 +32,32 @@ function AdminConsole() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        const data = {
+            destinationName: destinationName,
+            country: country,
+            destinationDescription: destinationDescription,
+            url: url,
+            url1: url1, 
+            url2: url2, 
+            LongText: longText, 
+        };
+
         if (isEditing) {
             const destinationRef = doc(db, "destinations", currentEditingId);
-            await updateDoc(destinationRef, {
-                destinationName: destinationName,
-                country: country,
-                destinationDescription: destinationDescription,
-                url: url,
-            });
+            await updateDoc(destinationRef, data);
             setIsEditing(false);
             setCurrentEditingId(null);
         } else {
-            await addDoc(collection(db, "destinations"), {
-                destinationName: destinationName,
-                country: country,
-                destinationDescription: destinationDescription,
-                url: url,
-            });
+            await addDoc(collection(db, "destinations"), data);
         }
 
         setDestinationName('');
         setCountry('');
         setDestinationDescription('');
         setUrl('');
+        setUrl1(''); 
+        setUrl2(''); 
+        setLongText(''); 
         fetchDestinations();
     };
 
@@ -71,6 +71,9 @@ function AdminConsole() {
         setCountry(destination.country);
         setDestinationDescription(destination.destinationDescription);
         setUrl(destination.url);
+        setUrl1(destination.url1 || ""); 
+        setUrl2(destination.url2 || ""); 
+        setLongText(destination.LongText || ""); 
         setIsEditing(true);
         setCurrentEditingId(destination.id);
     };
@@ -102,8 +105,6 @@ function AdminConsole() {
                     </div>
                     <div className="form-group">
                         <textarea
-                            type="text"
-                            size="3"
                             id="destinationDescription"
                             value={destinationDescription}
                             onChange={(e) => setDestinationDescription(e.target.value)}
@@ -119,6 +120,33 @@ function AdminConsole() {
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                             placeholder='Image URL'
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="url1"
+                            value={url1}
+                            onChange={(e) => setUrl1(e.target.value)}
+                            placeholder='Image URL 1'
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="url2"
+                            value={url2}
+                            onChange={(e) => setUrl2(e.target.value)}
+                            placeholder='Image URL 2'
+                        />
+                    </div>
+                    <div className="form-group">
+                        <textarea
+                            id="longText"
+                            value={longText}
+                            onChange={(e) => setLongText(e.target.value)}
+                            placeholder='Long Text'
+                            rows="5"
                         />
                     </div>
                     <div className="button-wrapper">

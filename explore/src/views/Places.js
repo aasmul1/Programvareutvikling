@@ -6,6 +6,7 @@ import DestinationCard from '../components/places/DestinationCard'
 import { useNavigate } from 'react-router-dom';
 
 
+
 /**
  * Front page with destination data. Fetches destination from firestore. 
  * Related components: 
@@ -50,6 +51,7 @@ function Places() {
       <div className="grid">
         {destinations.map((destination) => (
           <DestinationCard key= { destination.id } destination = { destination }/>
+          
         ))}
       </div>
     </div>
