@@ -4,6 +4,7 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from '../firebase';
 import DestinationCard from '../components/places/DestinationCard'
 
+
 /**
  * Front page with destination data. Fetches destination from firestore. Search and filter.
  * Related components: 
