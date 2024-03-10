@@ -1,7 +1,7 @@
 
 body {
     min-height: 100vh; 
-    margin: 100px;
+    margin: 0;
     padding: 0;
     display: flex;
     justify-content: center; 
@@ -10,7 +10,7 @@ body {
     background-color: var(--primary-color);
 }
 
-.admin-login-container {
+.create-user-container {
     font-size: 20px; ;
     width: 400px;
     padding: 20px;
@@ -18,7 +18,7 @@ body {
     border-radius: 10px;
     background-color: var(--secondary-color);
     box-sizing: border-box;
-    margin: 140px;
+    margin: 120px;
 
 } */
 

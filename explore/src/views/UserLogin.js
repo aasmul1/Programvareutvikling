@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import '../styles/AdminLogin.css';
+import '../styles/AdminLogin.css'; 
 import { auth } from '../firebase.js';
 import { useNavigate } from 'react-router-dom';
 
-function AdminLogin() {
+
+function UserLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -14,15 +15,15 @@ function AdminLogin() {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            navigate('/adminconsole'); 
+            navigate('/'); 
         } catch (error) {
             setError(error.message);
         }
     };
 
     return (
-        <div className="admin-login-container">
-            <h2>Admin Login</h2>
+        <div className="admin-login-container"> {}
+            <h2>User Login</h2>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleLogin}>
                 <div className="form-group">
@@ -39,4 +40,4 @@ function AdminLogin() {
     );
 }
 
-export default AdminLogin;
+export default UserLogin;

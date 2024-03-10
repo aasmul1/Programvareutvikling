@@ -3,6 +3,8 @@ import '../styles/places/Places.css';
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from '../firebase';
 import DestinationCard from '../components/places/DestinationCard'
+import { useNavigate } from 'react-router-dom';
+
 
 
 /**
@@ -14,6 +16,8 @@ import DestinationCard from '../components/places/DestinationCard'
  */
 function Places() {
   const [destinations, setDestinations] = useState([]);
+  const navigate = useNavigate(); 
+
   const [filteredDestinations, setFilteredDestinations] = useState([])
   const [searchInput, setSearchInput] = useState("")
   const [climate, setClimate] = useState("");
@@ -56,6 +60,10 @@ function Places() {
     fetchData();
   }, []);
 
+  const createuser = (e) => {
+    navigate('/createuser');
+  };
+  
   const handleSearch = (input) => {
     setSearchInput(input)
   }
