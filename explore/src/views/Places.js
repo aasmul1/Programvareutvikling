@@ -80,9 +80,6 @@ function Places() {
 
   return (
     <div className="Places">
-      <form onSubmit={createuser}>
-        <button type="createuser">Create user</button>
-      </form>
       <h1>Vacation Destinations</h1>
       <div className="search">
         <input

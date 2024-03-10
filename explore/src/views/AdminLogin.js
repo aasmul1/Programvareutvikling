@@ -22,7 +22,7 @@ function AdminLogin() {
 
     return (
         <div className="admin-login-container">
-            <h2>Login</h2>
+            <h2>Admin Login</h2>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleLogin}>
                 <div className="form-group">
