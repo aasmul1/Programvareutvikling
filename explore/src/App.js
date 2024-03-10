@@ -9,6 +9,7 @@ import Places from './views/Places';
 import CreateUser from './views/CreateUser'
 import PlacesDetails from './views/PlacesDetail';
 import RequireUser from './auth/RequireUser';
+import UserLogin from './views/UserLogin';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 <AdminConsole />
             </RequireAdmin>} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/login" element={<UserLogin />} />
           <Route path="/createuser" element={<CreateUser />}/>
           <Route path="/places/:destinationId" element={
             <RequireUser>
