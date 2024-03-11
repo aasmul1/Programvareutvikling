@@ -1,34 +1,48 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import '../styles/AdminLogin.css'; 
-import { auth } from '../firebase.js';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { auth, db } from '../firebase.js'; 
 import { useNavigate } from 'react-router-dom';
 
-
 function UserLogin() {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate(); 
 
     const handleLogin = async (e) => {
         e.preventDefault();
+
+       
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("username", "==", username));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.docs.length === 0) {
+            setError("Brukernavnet finnes ikke.");
+            return;
+        }
+
+        const userEmail = querySnapshot.docs[0].data().email;
+
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate('/'); 
+            await signInWithEmailAndPassword(auth, userEmail, password);
+            console.log("navigate('/');")
+            navigate('/')
+            
         } catch (error) {
             setError(error.message);
         }
     };
 
     return (
-        <div className="admin-login-container"> {}
+        <div className="admin-login-container">
             <h2>User Login</h2>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleLogin}>
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <label htmlFor="username">Username</label>
+                    <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>

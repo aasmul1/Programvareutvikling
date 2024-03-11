@@ -10,32 +10,39 @@ export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const logout = () => {
-        return auth.signOut();
-    };
+    const adminIDs = ["35SW0PERUwfLt09pU9mHlT0WMEB2", "Pw2c2kzWeUOZyMzbhsumsS8sbTz2"];
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
             if (user) {
-                const userDocRef = doc(db, 'users', user.uid);
-                const userDocSnap = await getDoc(userDocRef);
-
-                if (userDocSnap.exists()) {
-                    setCurrentUser({
-                        ...user,
-                        username: userDocSnap.data().username
-                    });
+              
+                if (adminIDs.includes(user.uid)) {
+                    setCurrentUser(user); 
                 } else {
-                    console.log("No such document!");
+                  
+                    const userDocRef = doc(db, 'users', user.uid);
+                    const userDocSnap = await getDoc(userDocRef);
+                    if (userDocSnap.exists()) {
+                        setCurrentUser({
+                            ...user,
+                            username: userDocSnap.data().username 
+                        });
+                    } else {
+                        console.log("No such document for user:", user.uid);
+                    }
                 }
             } else {
-                setCurrentUser(user);
+                setCurrentUser(null); 
             }
             setLoading(false);
         });
 
         return unsubscribe;
     }, []);
+
+    const logout = () => {
+        return auth.signOut();
+    };
 
     return (
         <AuthContext.Provider value={{ currentUser, logout }}>

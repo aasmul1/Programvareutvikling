@@ -12,7 +12,6 @@ function RequireAdmin({ children }) {
     const adminID = ["35SW0PERUwfLt09pU9mHlT0WMEB2", "Pw2c2kzWeUOZyMzbhsumsS8sbTz2"];
   
     if (!currentUser || !adminID.includes(currentUser.uid)) {
-      // TODO: not auth message
       return <Navigate to="/" />;
     }
   

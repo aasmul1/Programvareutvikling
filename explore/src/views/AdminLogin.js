@@ -10,11 +10,12 @@ function AdminLogin() {
     const [error, setError] = useState('');
     const navigate = useNavigate(); 
 
-    const handleLogin = async (e) => {
+    const handleLogin2 = async (e) => {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            navigate('/adminconsole'); 
+            navigate('/adminconsole');
+            
         } catch (error) {
             setError(error.message);
         }
@@ -24,7 +25,7 @@ function AdminLogin() {
         <div className="admin-login-container">
             <h2>Admin Login</h2>
             {error && <p className="error-message">{error}</p>}
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin2}>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
