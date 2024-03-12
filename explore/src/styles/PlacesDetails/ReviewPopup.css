@@ -1,0 +1,56 @@
+/* Review Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 999; /* Ensure it appears above other content */
+  }
+  
+  .popup.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .popup-inner {
+    position: relative; /* Adjust position to make close button relative to the inner container */
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    width: 400px; /* Set a fixed width for the popup */
+  }
+  
+  
+  
+  textarea {
+    width: 100%;
+    height: 150px; /* Adjust the height according to your design */
+    padding: 10px; /* Adjust the padding for inner content */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Add a border for visual clarity */
+    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+  }
+  
+  .btn {
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: var(--quinary-color);
+  }
+  

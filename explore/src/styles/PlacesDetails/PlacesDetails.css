@@ -26,11 +26,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
 
-  .view-more-images-btn {
+  button {
+    width: 47%;
+    display: block;
     background-color: var(--secondary-color); 
     color: white; 
     padding: var(--spacing-unit);
-    margin-top: calc(var(--spacing-unit) * 2); 
+    margin: calc(var(--spacing-unit) * 2) auto; 
     border: none; 
     border-radius: 5px; 
     font-size: calc(var(--font-base-size) + 2px); 
@@ -38,7 +40,7 @@
     transition: background-color 0.3s; 
   }
   
-  .view-more-images-btn:hover {
+  button:hover {
     background-color: var(--quinary-color); 
     color: var(--tertiary-color); 
   }
