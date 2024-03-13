@@ -5,13 +5,15 @@
 
 # Run Project
 
-To run the project run these in the terminal. 
+To run the project:  
 
 npm install
 
+npm install react-icons 
+
 npm start
 
-npm install react-icons 
+
 
 ## Getting started
 
