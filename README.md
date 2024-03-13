@@ -2,6 +2,21 @@
 
 
 
+
+# Run Project
+
+To run the project: 
+
+In the explore/explore folder:
+
+npm install
+
+npm install react-icons 
+
+npm start
+
+
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
