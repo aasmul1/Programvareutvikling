@@ -5,7 +5,9 @@
 
 # Run Project
 
-To run the project:  
+To run the project: 
+
+In the explore/explore folder:
 
 npm install
 
