@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import { useAuth } from '../../auth/AuthContext';
-import logo from '../../images/Logo.jpg';
+import logo from '../../images/fly.jpg';
 import '../../styles/Navbar/navbar.css';
 
 const Navbar = () => {
