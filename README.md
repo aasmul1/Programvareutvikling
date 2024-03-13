@@ -2,6 +2,17 @@
 
 
 
+
+# Run Project
+
+To run the project run these in the terminal. 
+
+npm install
+
+npm start
+
+npm install react-icons 
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
