@@ -2,30 +2,28 @@ import React, { useState, useEffect } from 'react';
 import '../styles/places/Places.css';
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from '../firebase';
-import DestinationCard from '../components/places/DestinationCard'
+import DestinationCard from '../components/places/DestinationCard';
+import AdCard from '../components/places/AdCard';
 import { useNavigate } from 'react-router-dom';
 
-
-
 /**
- * Front page with destination data. Fetches destination from firestore. Search and filter.
+ * Front page with destination data. Fetches destination and ad data from firestore. Search and filter.
  * Related components: 
  * - DestinationCard
+ * - AdCard
  * 
  * @returns the page
  */
 function Places() {
   const [destinations, setDestinations] = useState([]);
   const navigate = useNavigate(); 
+  const [ads, setAds] = useState([]);
 
   const [filteredDestinations, setFilteredDestinations] = useState([])
   const [searchInput, setSearchInput] = useState("")
   const [climate, setClimate] = useState("");
   const [type, setType] = useState("");
 
-  /**
-   * Use Effect hook to handle search and filter on destinations.
-   */
   useEffect(() => {
     const filterDestinations = () => {
       return destinations.filter((destination) =>
@@ -37,46 +35,40 @@ function Places() {
     setFilteredDestinations(filterDestinations());
   }, [searchInput, climate, type, destinations]);
 
-  /**
-   * Use Effect hook to fetch data on initial render.
-   */
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const q = query(collection(db, 'destinations'));
-        getDocs(q).then(docSnap => {
+        const destinationsQuery = query(collection(db, 'destinations'));
+        getDocs(destinationsQuery).then(docSnap => {
           let destinationsData = [];
           docSnap.forEach((doc) => {
             destinationsData.push({ ...doc.data(), id: doc.id });
           });
-          console.log("Document data", destinationsData);
           setDestinations(destinationsData);
-          setFilteredDestinations(destinationsData)
+          setFilteredDestinations(destinationsData);
+        });
+        
+        const adsQuery = query(collection(db, 'ads'));
+        getDocs(adsQuery).then(docSnap => {
+          let adsData = [];
+          docSnap.forEach((doc) => {
+            adsData.push(doc.data());
+          });
+          setAds(adsData);
         });
       } catch (error) {
-        console.log("Error getting data", error);
+        console.error("Error getting data", error);
       }
     };
     fetchData();
   }, []);
 
-  const createuser = (e) => {
-    navigate('/createuser');
-  };
-  
   const handleSearch = (input) => {
     setSearchInput(input)
   }
 
-  /**
-   * List of distinct climates based on destinations.
-   */
-  const climates = [...new Set(destinations.map((destination) => destination.climate).filter(climate => climate ))] // To remove empty climates
-
-  /**
-   * List of distinct types based on destinations.
-   */
-   const types = [...new Set(destinations.map((destination) => destination.type).filter(type => type ))]; // To remove empty types
+  const climates = [...new Set(destinations.map((destination) => destination.climate).filter(climate => climate ))];
+  const types = [...new Set(destinations.map((destination) => destination.type).filter(type => type ))];
 
   return (
     <div className="Places">
@@ -85,42 +77,36 @@ function Places() {
         <input
           type="text"
           id="input"
-          variant="outlined"
-          onChange={(e) => {
-            handleSearch(e.target.value)
-          }
-          }
-          label="Search"
+          onChange={(e) => handleSearch(e.target.value)}
           placeholder='Search'
         />
 
         <div className='filterSelect'>
           <select defaultValue={""} onChange={(e) => setClimate(e.target.value)}>
-            <option value="" disabled> Climate</option>
-            <option value=""> any </option>
+            <option value="" disabled>Climate</option>
+            <option value="">any</option>
             {climates.map(climate => (
-              <option key={climate} value={climate}>
-                {climate}
-              </option>
+              <option key={climate} value={climate}>{climate}</option>
             ))}
           </select>
           <select defaultValue={""} onChange={(e) => setType(e.target.value)}>
-            <option value="" disabled> Type</option>
-            <option value="" > any </option>
+            <option value="" disabled>Type</option>
+            <option value="">any</option>
             {types.map(type => (
-              <option key={type} value={type}>
-                {type}
-              </option>
+              <option key={type} value={type}>{type}</option>
             ))}
           </select>
         </div>
+      </div>
 
-      </div>
-      <div>
-      </div>
       <div className="grid">
-        {filteredDestinations.map((filteredDestinations) => (
-          <DestinationCard key={filteredDestinations.id} destination={filteredDestinations} />
+        {filteredDestinations.map((filteredDestination, index) => (
+          <>
+            <DestinationCard key={filteredDestination.id} destination={filteredDestination} />
+            {(index + 1) % 3 === 0 && ads.length > 0 && (
+              <AdCard key={`ad-${index}`} ad={ads[index % ads.length]} />
+            )}
+          </>
         ))}
       </div>
     </div>
