@@ -3,6 +3,7 @@ import '../styles/adminconsole/AdminConsole.css';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import AdminDestinationList from '../components/adminconsole/AdminDestinationList';
+import AdminAdList from '../components/adminconsole/AdminAdsList';
 
 function AdminConsole() {
     const [destinationName, setDestinationName] = useState('');
@@ -16,6 +17,20 @@ function AdminConsole() {
     const [isEditing, setIsEditing] = useState(false);
     const [currentEditingId, setCurrentEditingId] = useState(null);
 
+
+    const [ads, setAds] = useState([]);
+    const [adName, setAdName] = useState('');
+    const [image, setImage] = useState('');
+    const [readMoreLink, setReadMoreLink] = useState('');
+    const [isEditingAd, setIsEditingAd] = useState(false);
+    const [currentEditingAdId, setCurrentEditingAdId] = useState(null);
+
+    useEffect(() => {
+        fetchDestinations();
+        fetchAds(); 
+    }, []);
+
+
     useEffect(() => {
         fetchDestinations();
     }, []);
@@ -27,6 +42,15 @@ function AdminConsole() {
             items.push({ id: doc.id, ...doc.data() });
         });
         setDestinations(items);
+    };
+
+    const fetchAds = async () => {
+        const querySnapshot = await getDocs(collection(db, "ads")); 
+        const items = [];
+        querySnapshot.forEach((doc) => {
+            items.push({ id: doc.id, ...doc.data() });
+        });
+        setAds(items);
     };
 
     const handleSubmit = async (event) => {
@@ -76,6 +100,44 @@ function AdminConsole() {
         setLongText(destination.LongText || ""); 
         setIsEditing(true);
         setCurrentEditingId(destination.id);
+    };
+
+
+
+    const handleSubmitAd = async (event) => {
+        event.preventDefault();
+        const adData = {
+            adName,
+            image,
+            readMoreLink,
+        };
+
+        if (isEditingAd) {
+            const adRef = doc(db, "ads", currentEditingAdId);
+            await updateDoc(adRef, adData);
+            setIsEditingAd(false);
+            setCurrentEditingAdId(null);
+        } else {
+            await addDoc(collection(db, "ads"), adData);
+        }
+
+        setAdName('');
+        setImage('');
+        setReadMoreLink('');
+        fetchAds();
+    };
+
+    const startEditingAd = (ad) => {
+        setAdName(ad.adName);
+        setImage(ad.image);
+        setReadMoreLink(ad.readMoreLink);
+        setIsEditingAd(true);
+        setCurrentEditingAdId(ad.id);
+    };
+
+    const handleDeleteAd = async (id) => {
+        await deleteDoc(doc(db, "ads", id)); // Ensure 'ads' is the correct collection name
+        fetchAds(); // Refresh the list of ads after deletion
     };
 
     return (
@@ -158,6 +220,50 @@ function AdminConsole() {
                 <h2>Existing Destinations</h2>
                 <AdminDestinationList destinations={destinations} startEditing={startEditing} handleDelete={handleDelete} />
             </div>
+             <div className="AdForm">
+                <h2>{isEditingAd ? 'Edit Ad' : 'Create New Ad'}</h2>
+                <form onSubmit={handleSubmitAd}>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="adName"
+                            value={adName}
+                            onChange={(e) => setAdName(e.target.value)}
+                            placeholder='Ad Name'
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="image"
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
+                            placeholder='Image URL'
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            id="readMoreLink"
+                            value={readMoreLink}
+                            onChange={(e) => setReadMoreLink(e.target.value)}
+                            placeholder='Read More Link'
+                            required
+                        />
+                    </div>
+                    <div className="button-wrapper">
+                        <button type="submit">{isEditingAd ? 'Update Ad' : 'Create Ad'}</button>
+                    </div>
+                </form>
+            </div>
+            <div className="AdList">
+                <h2>Existing Ads</h2>
+                <AdminAdList ads={ads} startEditingAd={startEditingAd} handleDeleteAd={handleDeleteAd} />
+            </div>
+
+        
         </div>
     );
 }
