@@ -3,7 +3,7 @@ h1 {
 }
 
 .destination-description,
-.long-text {
+.long-text, .rating {
   color: white;
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
@@ -42,6 +42,25 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.rating ul {
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 0; /* Remove default padding */
+}
+
+.rating li {
+  margin-top: 20px;
+  width: 150%; /* Adjust the width as needed */
+  max-width: 500px; /* Set maximum width */
+  list-style: none; /* Remove the dot */
+}
+
+.review-content {
+  text-align: left; /* Align the review content to the left */
+}
+
 
 .popup-inner {
   position: relative;
@@ -91,16 +110,19 @@ input[type='number'] {
   background-color: var(--quinary-color);
 }
 
-.rating{
+
+.btn-small{
+  width: 20%;
+  background-color: var(--secondary-color);
   color: white;
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  margin-left: 5%;
-  margin-right: 10%;
-  margin-top: 2%;
-  font-size: medium;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.rating li{
-  margin-top: 20px;
+.btn-small:hover{
+  background-color: var(--quinary-color);
 }
