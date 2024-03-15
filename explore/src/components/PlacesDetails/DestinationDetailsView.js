@@ -1,14 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { addDoc, collection, doc, getDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import '../../styles/PlacesDetails/PlacesDetails.css';
 import { db } from '../../firebase';
 
-function DestinationDetailsView({ destination, currentImageUrl, onImageClick, user, reviews, setReviews  }) {
+function DestinationDetailsView({ destination, currentImageUrl, onImageClick, user, reviews, setReviews }) {
   const inputRef = useRef(null);
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(1);
   const [error, setError] = useState('');
   const [usernames, setUsernames] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentEditingReview, setCurrentEditingReview] = useState(null);
 
   useEffect(() => {
     const fetchUsernames = async () => {
@@ -36,27 +38,68 @@ function DestinationDetailsView({ destination, currentImageUrl, onImageClick, us
     }
 
     try {
-      const reviewsCollectionRef = collection(db, 'reviews');
-      const newReviewRef = await addDoc(reviewsCollectionRef, {
-        userID: user.uid, 
-        destinationID: destination.id, 
-        rating: rating,
-        comment: review
-      });
-
-      const newReviewSnapshot = await getDoc(newReviewRef);
-      const newReviewData = { id: newReviewSnapshot.id, ...newReviewSnapshot.data() };
-      
-      setReviews([...reviews, newReviewData]);
+      if (isEditing) {
+        await updateReview(currentEditingReview.id, review, rating);
+        setIsEditing(false);
+      } else {
+        await addReview(review, rating);
+      }
 
       setReview('');
       setRating(1);
       setError('');
     } catch (error) {
-      console.error('Error adding review to Firestore:', error);
+      console.error('Error adding/editing review to Firestore:', error);
     }
   };
 
+  const addReview = async (comment, rating) => {
+    const newReviewRef = await addDoc(collection(db, 'reviews'), {
+      userID: user.uid,
+      destinationID: destination.id,
+      rating: rating,
+      comment: comment
+    });
+
+    const newReviewSnapshot = await getDoc(newReviewRef);
+    const newReviewData = { id: newReviewSnapshot.id, ...newReviewSnapshot.data() };
+
+    setReviews([...reviews, newReviewData]);
+  };
+
+  const updateReview = async (reviewId, comment, rating) => {
+    await updateDoc(doc(db, 'reviews', reviewId), {
+      comment: comment,
+      rating: rating
+    });
+
+    const updatedReviews = reviews.map(review => {
+      if (review.id === reviewId) {
+        return { ...review, comment: comment, rating: rating };
+      }
+      return review;
+    });
+
+    setReviews(updatedReviews);
+  };
+
+  const handleEdit = (review) => {
+    setIsEditing(true);
+    setReview(review.comment);
+    setRating(review.rating);
+    setCurrentEditingReview(review);
+  };
+
+  const handleDelete = async (reviewId) => {
+    try {
+      await deleteDoc(doc(db, 'reviews', reviewId));
+
+      const updatedReviews = reviews.filter(review => review.id !== reviewId);
+      setReviews(updatedReviews);
+    } catch (error) {
+      console.error('Error deleting review:', error);
+    }
+  };
 
   const handleChange = (event) => {
     setReview(event.target.value);
@@ -100,16 +143,24 @@ function DestinationDetailsView({ destination, currentImageUrl, onImageClick, us
         <label htmlFor="rating">Rating:</label>
         <input type="number" id="rating" value={rating} min="1" max="5" onChange={handleRatingChange} />
         {error && <p className="error">{error}</p>}
-        <button className="btn" onClick={handleSubmit}>Submit</button>
+        <button className="btn" onClick={handleSubmit}>{isEditing ? 'Update' : 'Submit'}</button>
       </div>
       <div className="rating">
         <h2>Reviews</h2>
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
-              <p>User: {usernames[review.userID]}</p>
-              <p>Comment: {review.comment}</p>
-              <p>Rating: {review.rating}</p>
+              <div className="review-content">
+                <p>User: {usernames[review.userID]}</p>
+                <p>Comment: {review.comment}</p>
+                <p>Rating: {review.rating}</p>
+                {user && user.uid === review.userID && (
+                  <div>
+                    <button className="btn-small" onClick={() => handleEdit(review)}>Edit</button>
+                    <button className="btn-small" onClick={() => handleDelete(review.id)}>Delete</button>
+                  </div>
+                )}
+              </div>
             </li>
           ))}
         </ul>
