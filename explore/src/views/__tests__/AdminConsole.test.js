@@ -9,12 +9,12 @@ test('name, country, description and url form should all be in the document ', (
   const name = component.getByPlaceholderText("Destination Name");
   const country = component.getByPlaceholderText("Country name");
   const description = component.getByPlaceholderText("Destination Description");
-  const url = component.getByPlaceholderText("Image URL");
+  const url = component.getAllByPlaceholderText("Image URL");
 
   expect(name).toBeInTheDocument();
   expect(country).toBeInTheDocument();
   expect(description).toBeInTheDocument();
-  expect(url).toBeInTheDocument();
+  expect(url.length > 0).toBe(true);
 });
 
 test('Createbutton should be called on click', () => {
