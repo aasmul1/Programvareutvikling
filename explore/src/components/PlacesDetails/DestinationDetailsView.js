@@ -11,6 +11,7 @@ function DestinationDetailsView({ destination, currentImageUrl, onImageClick, us
   const [usernames, setUsernames] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [currentEditingReview, setCurrentEditingReview] = useState(null);
+  const adminID = ["35SW0PERUwfLt09pU9mHlT0WMEB2", "Pw2c2kzWeUOZyMzbhsumsS8sbTz2"];
 
   useEffect(() => {
     const fetchUsernames = async () => {
@@ -154,12 +155,19 @@ function DestinationDetailsView({ destination, currentImageUrl, onImageClick, us
                 <p>User: {usernames[review.userID]}</p>
                 <p>Comment: {review.comment}</p>
                 <p>Rating: {review.rating}</p>
-                {user && user.uid === review.userID && (
+                {user && user.uid === review.userID && !adminID.includes(user.uid) && (
                   <div>
                     <button className="btn-small" onClick={() => handleEdit(review)}>Edit</button>
                     <button className="btn-small" onClick={() => handleDelete(review.id)}>Delete</button>
                   </div>
                 )}
+                {adminID.includes(user.uid) && (
+                  <div>
+                    <button className="btn-small" onClick={() => handleEdit(review)}>Edit</button>
+                    <button className="btn-small" onClick={() => handleDelete(review.id)}>Delete</button>
+                  </div>
+                )}
+                
               </div>
             </li>
           ))}
