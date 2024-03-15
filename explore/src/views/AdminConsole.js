@@ -209,6 +209,7 @@ function AdminConsole() {
                             onChange={(e) => setLongText(e.target.value)}
                             placeholder='Long Text'
                             rows="5"
+                            required
                         />
                     </div>
                     <div className="button-wrapper">
