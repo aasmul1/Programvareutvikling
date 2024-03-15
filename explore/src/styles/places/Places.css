@@ -129,10 +129,11 @@ h2 {
 }
 
 .AdItem img {
-  width: auto;
+  max-width: 65%;
   height: auto;
   object-fit: cover;
-  border-radius: 15px; 
+  border-radius: 15px;
+  margin-bottom: 0px;
 }
 
 .AdItem h3 {
