@@ -19,7 +19,8 @@ body {
     background-color: var(--secondary-color);
     box-sizing: border-box;
     margin: 120px;
-
+    margin-right: auto;
+    margin-left: auto;
 } */
 
 .form-group {
