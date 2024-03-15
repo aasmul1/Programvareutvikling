@@ -143,3 +143,45 @@ border-color: #282c34;
   width: 50%;
 }
 
+
+.AdList {
+  color: var(--quaternary-color);
+    padding-top: 3%;
+    margin-bottom: 4%;
+    margin-top: 10%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    background-color: var(--secondary-color); 
+    border-radius: 10px; 
+    text-align: center;
+}
+
+.AdItem{
+  color: var(--quinary-color);
+  margin-bottom: 8%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.AdItem img {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px; 
+  margin-bottom: 10px;
+}
+
+.AdItem h3, .AdItem a {
+  margin: 5px 0;
+}
+
+
+.small-button button {
+  width: 100%;
+  margin: 10px;
+}
+
+
