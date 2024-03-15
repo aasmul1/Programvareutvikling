@@ -47,17 +47,14 @@ font-size: 15px;
 input {
 border-radius: 8px;
 border-color: #282c34;
-width: 600px;
 }
 
 textarea {
   resize: none;
   font-family: Arial, sans-serif;
-  margin: 5px 0; 
-  width: 600px;
-
-  
+  margin: 5px 0;   
 }
+
 textarea::placeholder {
   font-size: 15px;
 }
@@ -68,15 +65,17 @@ border-radius: 5px;
 border-color: #282c34;
 }
 
-.form-group {
+.form-groups {
 margin-top: 15px;
 margin-bottom: 15px;
+width: 500px;
 }
 
 .button-wrapper {
 display: flex;
 justify-content: center; 
 width: 100%; 
+
 }
 
 .small-button{
@@ -87,6 +86,8 @@ width: 100%;
 .small-button button {
   width: 30%;
   margin: 10px; 
+  background-color: var(--primary-color);
+
 }
 
 textarea {
@@ -120,6 +121,10 @@ input {
 
 border-radius: 8px;
 border-color: #282c34;
+}
+
+button[type="submit"]{
+  background-color: var(--primary-color);
 }
 
 .DestinationList {
@@ -156,6 +161,13 @@ border-color: #282c34;
     border-radius: 10px; 
     text-align: center;
 }
+
+.AdForm {
+  width: 500px;
+  margin-left: 35%;
+  margin-right:35%;
+}
+
 
 .AdItem{
   color: var(--quinary-color);
