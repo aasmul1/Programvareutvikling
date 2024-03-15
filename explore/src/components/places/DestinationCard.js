@@ -28,7 +28,7 @@ function DestinationCard({ destination }) {
 
     const toggleVisited = async () => {
         if (!currentUser) {
-            alert("You must log in to mark destinations as visited or not visited.");
+            alert("You must log in to mark destinations as visited. ");
             return;
         }
         const visitDocRef = doc(db, 'visits', `${currentUser.uid}_${destination.id}`);
