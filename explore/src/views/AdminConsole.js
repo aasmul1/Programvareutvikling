@@ -145,7 +145,7 @@ function AdminConsole() {
             <div className="Form">
                 <h2>{isEditing ? 'Edit Travel Destination' : 'Create Travel Destination'}</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <input
                             type="text"
                             id="destinationName"
@@ -155,7 +155,7 @@ function AdminConsole() {
                             required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <input
                             type="text"
                             id="country"
@@ -165,7 +165,7 @@ function AdminConsole() {
                             placeholder='Country name'
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <textarea
                             id="destinationDescription"
                             value={destinationDescription}
@@ -175,7 +175,7 @@ function AdminConsole() {
                             rows="8"
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <input
                             type="text"
                             id="url"
@@ -184,7 +184,7 @@ function AdminConsole() {
                             placeholder='Image URL'
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <input
                             type="text"
                             id="url1"
@@ -193,7 +193,7 @@ function AdminConsole() {
                             placeholder='Image URL 1'
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <input
                             type="text"
                             id="url2"
@@ -202,7 +202,7 @@ function AdminConsole() {
                             placeholder='Image URL 2'
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-groups">
                         <textarea
                             id="longText"
                             value={longText}
