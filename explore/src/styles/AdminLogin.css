@@ -19,6 +19,8 @@ body {
     background-color: var(--secondary-color);
     box-sizing: border-box;
     margin: 140px;
+    margin-right: auto;
+    margin-left: auto;
 
 } */
 
