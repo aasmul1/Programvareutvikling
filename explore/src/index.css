@@ -39,6 +39,7 @@ body {
   line-height: 1.6;
   color: var(--primary-color);
   background-color: #fff;
+  color-scheme: light dark;
 }
 
 a {
