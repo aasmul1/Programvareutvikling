@@ -60,7 +60,8 @@ h1 {
   margin-bottom: 15px;
   padding: 16px;
   background-color: var(--secondary-color);
-} 
+  position: relative;
+}
 
 .destination:hover {
   transform: translateY(-10px);
@@ -163,3 +164,12 @@ h2 {
 .AdItem:hover {
   transform: translateY(-10px);
 }
+
+.visited-sign {
+  font-size: 50px; 
+  color: green;
+  position: absolute; 
+  top: 10px;
+  right: 10px; 
+}
+
