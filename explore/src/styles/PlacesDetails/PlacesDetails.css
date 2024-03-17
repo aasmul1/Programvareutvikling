@@ -3,45 +3,180 @@
   h1 {
     text-align: center;
   }
-  
-  .destination-description, .long-text {
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 2%;
-    font-size: medium;
-   
+
+  .weather-box {
+    display: block; 
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto; 
+    align-self: auto;
+    order: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(37, 61, 89, 0.1);
+    overflow: hidden;
+    /* margin-bottom: 15px;
+    padding: 16px; */
+    background-color: var(--secondary-color);
+    width: 500px;
+    height: 300px;
+
   }
+
+
+  .weather-icon p {
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding is included in the width/height */
+    align-items: center;
+
+  }
+
+  .destination-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .icons-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .weather-box img {
+    display: block;
+    margin-bottom: 10px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(37, 61, 89, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .weather-icon {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 15vmin;
+    height: 15vmin;
+    background: radial-gradient(
+      circle at center,
+      var(--tertiary-color) 0%,
+      var(--tertiary-color) 70%, 
+      var(--secondary-color) 70.1% /* Adjusted for a smoother transition */
+    );
+      box-sizing: border-box; /* Ensures padding is included in the width/height */
+  }
+
+
 
   .destination-image {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%; 
-    max-width: 600px; 
-    height: auto; 
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+
+    width: auto; 
+    width: 500px;
+    height: 300px; 
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-
-  .view-more-images-btn {
-    background-color: var(--secondary-color); 
-    color: white; 
-    padding: var(--spacing-unit);
-    margin-top: calc(var(--spacing-unit) * 2); 
-    border: none; 
-    border-radius: 5px; 
-    font-size: calc(var(--font-base-size) + 2px); 
     cursor: pointer; 
-    transition: background-color 0.3s; 
+    transition: transform 0.3s ease-in-out;
   }
   
-  .view-more-images-btn:hover {
-    background-color: var(--quinary-color); 
-    color: var(--tertiary-color); 
+  .long-description {
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 50px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(37, 61, 89, 0.1);
+    overflow: hidden;
+    /* margin-bottom: 15px;
+    padding: 16px; */
+    background-color: var(--secondary-color);
+    margin-bottom: 40px;
   }
+
+  .long-text {
+    color: white;
+    /* font-family: 'Times New Roman', Times, serif; */
+    /* font-style: italic; */
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: stretch;
+    order: 0;
+  }
+
+
+
+  .short-description {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(37, 61, 89, 0.1);
+    overflow: hidden;
+    padding: 50px;
+    /* margin-bottom: 15px;
+    padding: 16px; */
+    background-color: var(--secondary-color);
+    margin-bottom: 40px;
+  }
+
+  .short-text {
+    color: white;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: stretch;
+    order: 0;
+  }
+
+
+
+
+
+  
+  .destination-image:hover {
+    transform: translateY(-5px);
+
+  }
+
 
   
 
