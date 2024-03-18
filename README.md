@@ -20,6 +20,20 @@ npm start
 
 
 
+
+# Codebase
+
+## Backend
+Firebase
+
+
+## Frontend
+The frontend of the application is divided into three folders: views, styles, and components. The files in the 'views' folder represent the different pages of the application. The components are independent and reusable pieces of code. For instance, the 'navbar.js' component is used on every single page. In the 'styles' folder, there are CSS files that style the various files within the 'views' and 'components' folders.
+
+
+
+
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
