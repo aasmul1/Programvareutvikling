@@ -4,6 +4,7 @@ import { FaUser } from 'react-icons/fa';
 import { useAuth } from '../../auth/AuthContext';
 import logo from '../../images/fly.jpg';
 import '../../styles/Navbar/navbar.css';
+import Darkmode from '../darkmode/Darkmode';
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
@@ -44,6 +45,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
+      <Darkmode/>
     </nav>
   );
 };

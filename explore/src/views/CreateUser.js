@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { auth, db } from '../firebase'; // Anta at db er din Firestore instans
+import { auth, db } from '../firebase'; 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore'; // For å lagre brukerinfo i Firestore
+import { doc, setDoc } from 'firebase/firestore'; 
 import '../styles/user/CreateUser.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ function UserRegistration() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [username, setUsername] = useState(''); // Legg til denne linjen for brukernavn
+    const [username, setUsername] = useState(''); 
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -30,20 +30,20 @@ function UserRegistration() {
         if (validatePassword()) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then(async (res) => {
-                    // Lagre brukernavn i Firestore sammen med bruker-ID
+                   
                     await setDoc(doc(db, 'users', res.user.uid), {
                         username: username,
                         email: email
                     });
-                    navigate('/login'); // Naviger til innloggingssiden etter vellykket registrering
+                    navigate('/login'); 
                 })
                 .catch((err) => setError(err.message));
         }
-        // Tøm feltene etter forsøk på registrering
+      
         setEmail('');
         setPassword('');
         setConfirmPassword('');
-        setUsername(''); // Husk å tømme brukernavnfeltet også
+        setUsername(''); 
     };
 
     return (
