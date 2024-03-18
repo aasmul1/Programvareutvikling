@@ -2,8 +2,11 @@
 
 
 
+# Introduction
+Explore is an application for learning about and reviewing travel destinations.
 
-# Run Project
+
+# Running the Project
 
 To run the project: 
 
