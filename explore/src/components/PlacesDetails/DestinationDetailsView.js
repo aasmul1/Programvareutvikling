@@ -135,8 +135,8 @@ function DestinationDetailsView({ destination, currentImageUrl, onImageClick, us
         </div>
         <div className='destination-display'>
           <WeatherData destination={destination} />
-          <div className='image-box'>
-            <img onClick={onImageClick} src={currentImageUrl} alt={destination.destinationName} className="destination-images" />
+          <div className='image-box' onClick={onImageClick}>
+            <img  src={currentImageUrl} alt={destination.destinationName} className="destination-image" />
           </div>
         </div>
         <button onClick={handleScrollToInnerPopup} className="rate-btn">
