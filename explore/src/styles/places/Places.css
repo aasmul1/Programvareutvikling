@@ -89,7 +89,7 @@ h2 {
 }
 
 .see-more {
-  align-self: center;
+  text-align: center;
   text-decoration: none;
   color: var(--quaternary-color);
   font-weight: bold;
