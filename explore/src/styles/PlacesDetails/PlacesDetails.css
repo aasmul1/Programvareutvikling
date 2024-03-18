@@ -91,7 +91,7 @@ h1 {
   order: 0;
 
   width: auto;
-width: 500px;
+  width: 500px;
   height: 300px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -213,7 +213,7 @@ button:hover {
   margin-right: auto;
   width: 80%;
   max-width: 600px;
-  height: auto;
+  height: 298px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
