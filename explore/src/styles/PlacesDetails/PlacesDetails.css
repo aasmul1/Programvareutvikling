@@ -2,6 +2,10 @@ h1 {
   text-align: center;
 }
 
+.weather-box h2 {
+  margin-bottom: 3%;
+}
+
 .weather-box {
   display: block;
   flex-grow: 0;
@@ -15,11 +19,31 @@ h1 {
   /* margin-bottom: 15px;
     padding: 16px; */
   background-color: var(--secondary-color);
-  width: 500px;
-  height: 300px;
+  width: 38vmax;
+  height: 23vmax;
 
 }
 
+.image-box {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(37, 61, 89, 0.1);
+  position: relative;
+  overflow: hidden;
+  /* margin-bottom: 15px;
+    padding: 16px; */
+  background-color: var(--secondary-color);
+  width: 38vmax;
+  height: 23vmax;
+
+}
 
 .weather-icon p {
   text-align: center;
@@ -31,12 +55,24 @@ h1 {
 .destination-display {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
   align-content: stretch;
   margin-left: 40px;
   margin-right: 40px;
+  gap: 20px;
+}
+
+.destination-display > * { /* This targets all direct children of .destination-display */
+  margin-bottom: 20px; /* Adjust the value based on your spacing preference */
+}
+
+@media (max-width: 800px) { /* Adjust this value based on your needs */
+  .destination-display {
+    flex-direction: column;
+    align-items: center; /* This centers the items vertically */
+  }
 }
 
 .icons-display {
@@ -58,11 +94,12 @@ h1 {
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  width: 90px;
-  height: 90px;
+  width: 20%;
+  height: 20%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(37, 61, 89, 0.1);
   transition: transform 0.3s ease-in-out;
+
 }
 
 .weather-icon {
@@ -70,8 +107,8 @@ h1 {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  width: 15vmin;
-  height: 15vmin;
+  width: 10vmax;
+  height: 10vmax;
   background: radial-gradient(circle at center,
       var(--tertiary-color) 0%,
       var(--tertiary-color) 70%,
@@ -82,21 +119,18 @@ h1 {
 
 
 
-.destination-image {
+.image-box .destination-images {
   display: block;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
+  margin-right: 0;
+  margin-left: 0;
   align-self: auto;
-  order: 0;
-
-  width: auto;
-width: 500px;
-  height: 300px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width:100%;
+  
+  height: 100%;
+  border-radius: 0;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  object-fit: cover;
 }
 
 .long-description {
@@ -214,6 +248,8 @@ button:hover {
   width: 80%;
   max-width: 600px;
   height: auto;
+  max-height: 400px;
+  min-height: 400px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
