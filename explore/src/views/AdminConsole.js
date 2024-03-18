@@ -9,6 +9,8 @@ function AdminConsole() {
     const [destinationName, setDestinationName] = useState('');
     const [country, setCountry] = useState('');
     const [destinationDescription, setDestinationDescription] = useState('');
+    const [destinationClimate, setDestinationClimate] = useState('');
+    const [destinationType, setDestinationType] = useState('');
     const [url, setUrl] = useState("");
     const [url1, setUrl1] = useState(""); 
     const [url2, setUrl2] = useState(""); 
@@ -60,6 +62,8 @@ function AdminConsole() {
             destinationName: destinationName,
             country: country,
             destinationDescription: destinationDescription,
+            climate: destinationClimate,
+            type: destinationType,
             url: url,
             url1: url1, 
             url2: url2, 
@@ -78,6 +82,8 @@ function AdminConsole() {
         setDestinationName('');
         setCountry('');
         setDestinationDescription('');
+        setDestinationClimate('');
+        setDestinationType('');
         setUrl('');
         setUrl1(''); 
         setUrl2(''); 
@@ -91,9 +97,15 @@ function AdminConsole() {
     };
 
     const startEditing = (destination) => {
+        const element = document.getElementById("editDestinationForm");
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         setDestinationName(destination.destinationName);
         setCountry(destination.country);
         setDestinationDescription(destination.destinationDescription);
+        setDestinationClimate(destination.climate);
+        setDestinationType(destination.type);
         setUrl(destination.url);
         setUrl1(destination.url1 || ""); 
         setUrl2(destination.url2 || ""); 
@@ -140,9 +152,11 @@ function AdminConsole() {
         fetchAds(); // Refresh the list of ads after deletion
     };
 
+
+
     return (
         <div className="AdminConsole">
-            <div className="Form">
+            <div className="Form" id="editDestinationForm">
                 <h2>{isEditing ? 'Edit Travel Destination' : 'Create Travel Destination'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-groups">
@@ -173,6 +187,26 @@ function AdminConsole() {
                             required
                             placeholder='Destination Description'
                             rows="8"
+                        />
+                    </div>
+                    <div className="form-groups">
+                        <input
+                            type="text"
+                            id="destinationClimate"
+                            value={destinationClimate}
+                            onChange={(e) => setDestinationClimate(e.target.value)}
+                            placeholder='Destination climate'
+                            required
+                        />
+                    </div>
+                    <div className="form-groups">
+                        <input
+                            type="text"
+                            id="destinationTypw"
+                            value={destinationType}
+                            onChange={(e) => setDestinationType(e.target.value)}
+                            placeholder='Destination type'
+                            required
                         />
                     </div>
                     <div className="form-groups">

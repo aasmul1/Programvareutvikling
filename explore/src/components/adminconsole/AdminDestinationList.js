@@ -2,6 +2,7 @@ import '../../styles/adminconsole/AdminConsole.css'
 
 function AdminDestinationList({ destinations, startEditing, handleDelete }) {
 
+    
     return (
         <>
             {destinations.map((destination) => (

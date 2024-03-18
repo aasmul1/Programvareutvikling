@@ -182,56 +182,5 @@ function DestinationDetailsView({ destination, currentImageUrl, onImageClick, us
       </div>
     </body>
 )};
-//   return (
-//     <div>
-//       <h1>{destination.destinationName}</h1>
-//       <img src={currentImageUrl} alt={destination.destinationName} className="destination-image" />
-//       <button onClick={onImageClick} className="view-more-images-btn">
-//         View more images from {destination.destinationName}
-//       </button>
-//       <button onClick={handleScrollToInnerPopup} className="rate-btn">
-//         Review {destination.destinationName}
-//       </button>
-//       <h1 className="destination-description">{destination.destinationDescription}</h1>
-//       <p className="long-text" ref={inputRef}>
-//         {formattedLongText}
-//       </p>
-//       <div className="popup-inner">
-//         <textarea value={review} onChange={handleChange} placeholder="Write your review here" />
-//         <label htmlFor="rating">Rating:</label>
-//         <input type="number" id="rating" value={rating} min="1" max="5" onChange={handleRatingChange} />
-//         {error && <p className="error">{error}</p>}
-//         <button className="btn" onClick={handleSubmit}>{isEditing ? 'Update' : 'Submit'}</button>
-//       </div>
-//       <div className="rating">
-//         <h2>Reviews</h2>
-//         <ul>
-//           {reviews.map((review) => (
-//             <li key={review.id}>
-//               <div className="review-content">
-//                 <p>User: {usernames[review.userID]}</p>
-//                 <p>Comment: {review.comment}</p>
-//                 <p>Rating: {review.rating}</p>
-//                 {user && user.uid === review.userID && !adminID.includes(user.uid) && (
-//                   <div>
-//                     <button className="btn-small" onClick={() => handleEdit(review)}>Edit</button>
-//                     <button className="btn-small" onClick={() => handleDelete(review.id)}>Delete</button>
-//                   </div>
-//                 )}
-//                 {adminID.includes(user.uid) && (
-//                   <div>
-//                     <button className="btn-small" onClick={() => handleEdit(review)}>Edit</button>
-//                     <button className="btn-small" onClick={() => handleDelete(review.id)}>Delete</button>
-//                   </div>
-//                 )}
-
-//               </div>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default DestinationDetailsView;
