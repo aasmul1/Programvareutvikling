@@ -19,8 +19,6 @@ npm install react-icons
 npm start
 
 
-
-
 # Codebase
 
 ## Backend
@@ -28,9 +26,7 @@ Firebase
 
 
 ## Frontend
-The frontend of the application is divided into three folders: views, styles, and components. The files in the 'views' folder represent the different pages of the application. The components are independent and reusable pieces of code. For instance, the 'navbar.js' component is used on every single page. In the 'styles' folder, there are CSS files that style the various files within the 'views' and 'components' folders.
-
-
+The front end of the application is divided into the folders 'views', 'styles', and 'components'. The 'views' folder contains the different pages of the application. The 'components' are independent and reusable bits of code. Some components, like 'navbar.js', are used on every single page. The 'styles' folder contains the CSS files that style the different files in 'views'.
 
 
 
