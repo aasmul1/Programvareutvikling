@@ -36,7 +36,7 @@ function AdminConsole() {
     useEffect(() => {
         fetchDestinations();
     }, []);
-
+    // AI-GENERATED CODE: FetchDestinations is developed with help of ChatGPT.
     const fetchDestinations = async () => {
         const querySnapshot = await getDocs(collection(db, "destinations"));
         const items = [];
@@ -45,7 +45,7 @@ function AdminConsole() {
         });
         setDestinations(items);
     };
-
+    // AI-GENERATED CODE: FetchAds is developed with help of ChatGPT.
     const fetchAds = async () => {
         const querySnapshot = await getDocs(collection(db, "ads")); 
         const items = [];
@@ -146,7 +146,7 @@ function AdminConsole() {
         setIsEditingAd(true);
         setCurrentEditingAdId(ad.id);
     };
-
+    // AI-GENERATED CODE: HandleDeleteAd is developed with help of ChatGPT.
     const handleDeleteAd = async (id) => {
         await deleteDoc(doc(db, "ads", id)); // Ensure 'ads' is the correct collection name
         fetchAds(); // Refresh the list of ads after deletion

@@ -11,6 +11,7 @@ import PlacesDetails from './views/PlacesDetail';
 import RequireUser from './auth/RequireUser';
 import UserLogin from './views/UserLogin';
 
+// AI-GENERATED CODE: Copilot is used to support and find mistakes in the Router-setup.
 function App() {
   return (
     <Router>
