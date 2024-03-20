@@ -23,7 +23,7 @@ function UserRegistration() {
         }
         return isValid;
     };
-
+    // AI-GENERATED CODE: Copilot is used for register function.
     const register = (e) => {
         e.preventDefault();
         setError('');

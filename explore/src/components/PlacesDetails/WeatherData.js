@@ -6,6 +6,7 @@ const WeatherData = ({ destination }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        // AI-GENERATED CODE: FetchData is developed with help of microsoft copilot.
         const fetchData = async () => {
             const LOCATION = {
                 lat: destination.geopoint._lat,

@@ -36,6 +36,7 @@ function Places() {
   }, [searchInput, climate, type, destinations]);
 
   useEffect(() => {
+    // AI-GENERATED CODE: FetchData is developed with help of microsoft copilot.
     const fetchData = async () => {
       try {
         const destinationsQuery = query(collection(db, 'destinations'));

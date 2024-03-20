@@ -19,6 +19,7 @@ function PlacesDetails() {
 
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
+          // AI-GENERATED CODE: Copilot is used to create destinationData.
           const destinationData = { ...docSnap.data(), id: docSnap.id };
           setDestination(destinationData);
           setCurrentImageUrl(destinationData.url); 

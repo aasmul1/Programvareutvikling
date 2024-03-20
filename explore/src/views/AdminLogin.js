@@ -4,6 +4,7 @@ import '../styles/AdminLogin.css';
 import { auth } from '../firebase.js';
 import { useNavigate } from 'react-router-dom';
 
+// AI-GENERATED CODE: Copilot is used to find code mistakes in AdminLogin .
 function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
