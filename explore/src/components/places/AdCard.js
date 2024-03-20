@@ -5,7 +5,7 @@ function AdCard({ ad }) {
     return (
         <div className="AdItem">
            
-            <h2>{'Reklame'}</h2>
+            <h2>{'Advertisement'}</h2>
             <h3>{ad.adName}</h3>
             
             <img src={ad.image} alt={ad.adName} />
