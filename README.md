@@ -22,7 +22,7 @@ npm start
 # Codebase
 
 ## Backend
-The backend of the application is Firebase. Firebase is a free cloud-based service that simplifies and automates hosting and databases, and supports secure identification methods. Explore uses firebase to store ads, destinations, geodata, reviews, role, users, visits. 
+The backend of the application is Firebase. Firebase is a free cloud-based service that simplifies and automates hosting and databases, and supports secure identification methods. Explore uses firebase to store ads, destinations, geodata, reviews, role, users, and visits. 
 
 
 ## Frontend
